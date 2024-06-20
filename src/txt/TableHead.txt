@@ -1,0 +1,21 @@
+
+
+
+
+
+
+     
+
+
+            <div className="checkbox-group-wrapper">
+              <div className="checkbox-group d-flex">
+                <div className="checkbox-theme-default custom-checkbox checkbox-group__single d-flex">
+                  <input
+                    className="checkbox"
+                    type="checkbox"
+                    id="check-grp-content12"
+                  />
+                  <label for="check-grp-content12"></label>
+                </div>
+              </div>
+            </div>

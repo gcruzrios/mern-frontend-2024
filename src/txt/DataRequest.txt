@@ -1,0 +1,114 @@
+  const [obsSeleccionado, setobsSeleccionado] = useState({
+    
+      "codigoInstitucion": "",
+      "identificacion": "",
+      "razonSocial": "",
+      "tipoRazonSocial": "",
+      "nombreCONAPAM": "",
+      "idDistrito": "",
+      "region": "",
+      "otrasSenias": "",
+      "geoLocalizacion": "",
+      "cedulaRepresentanteLegal": "",
+      "nombreRepresentanteLegal": "",
+      "primerApellidoRepresentanteLegal": "",
+      "segundoApellidoRepresentanteLegal": "",
+      "correoRepresentante": "",
+      "telefonoRepresentante": "",
+      "cedulaCoordinador": "",
+      "nombreCoordinador": "",
+      "primerApellidoCoordinador": "",
+      "segundoApellidoCoordinador": "",
+      "correoCoordinador": "",
+      "telefonoCoordinador": "",
+      "capacidadAtencionPAM": "",
+      "correoOrganizacion": "",
+      "estado": "",
+      "modalidadAtencion": ""
+   
+    // jefe:localStorage.getItem('idUsuario')
+  });
+
+
+  const Token = localStorage.getItem('Token');
+
+  const [data, setData]=useState([]);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setobsSeleccionado((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+    console.log(obsSeleccionado);
+  };
+
+  const peticionGet = async () => {
+    //const idUsuario = localStorage.getItem('idUsuario');
+    const Token = localStorage.getItem("Token");
+
+    await axios.get("/wsSIPAM/GetOrganizaciones", { headers: { Authorization:'Bearer '+Token } }).then((response) => {
+      setData(response.data);
+    });
+  };
+
+  const peticionPost = async () => {
+    console.log(obsSeleccionado);
+    const token = localStorage.getItem("token");
+    await axios
+      .post("/wsSIPAM/AgregarOrganizacion", obsSeleccionado, { headers: { Authorization:'Bearer '+Token } })
+      .then((response) => {
+        setData(data.concat(response.data));
+        //abrirCerrarModalInsertar();
+        peticionGet();
+      });
+  };
+
+  const peticionPut = async () => {
+    const token = localStorage.getItem("token");
+    await axios
+      .put("/wsSIPAM/ModifOrganizacion" + obsSeleccionado._id, obsSeleccionado, {
+        headers: { token: token },
+      })
+      .then((response) => {
+        var dataNueva = data;
+        dataNueva.map((obs) => {
+          if (obsSeleccionado._id === obs._id) {
+
+
+            obs.codigoInstitucion= obsSeleccionado.codigoInstitucion
+            obs.identificacion=obsSeleccionado.identificacion
+            obs.razonSocial=obsSeleccionado.razonSocial
+            obs.tipoRazonSocial=obsSeleccionado.tipoRazonSocial
+            obs.nombreCONAPAM=obsSeleccionado.nombreCONAPAM
+            obs.idDistrito=obsSeleccionado.idDistrito
+            obs.region=obsSeleccionado.region
+            obs.otrasSenias=obsSeleccionado.otrasSenias
+            obs.geoLocalizacion=obsSeleccionado.geoLocalizacion
+            obs.cedulaRepresentanteLegal=obsSeleccionado.cedulaRepresentanteLegal
+            obs.nombreRepresentanteLegal=obsSeleccionado.nombreRepresentanteLegal
+            obs.primerApellidoRepresentanteLegal=obsSeleccionado.primerApellidoRepresentanteLegal
+            obs.segundoApellidoRepresentanteLegal=obsSeleccionado.segundoApellidoRepresentanteLegal
+            obs.correoRepresentante=obsSeleccionado.correoRepresentante
+            obs.telefonoRepresentante=obsSeleccionado.telefonoRepresentante
+            obs.cedulaCoordinador=obsSeleccionado.cedulaCoordinador
+            obs.nombreCoordinador=obsSeleccionado.nombreCoordinador
+            obs.primerApellidoCoordinador=obsSeleccionado.primerApellidoCoordinador
+            obs.segundoApellidoCoordinador=obsSeleccionado.segundoApellidoCoordinador
+            obs.correoCoordinador=obsSeleccionado.correoCoordinador
+            obs.telefonoCoordinador=obsSeleccionado.telefonoCoordinador
+            obs.capacidadAtencionPAM=obsSeleccionado.capacidadAtencionPAM
+            obs.correoOrganizacion=obsSeleccionado.correoOrganizacion
+            obs.estado=obsSeleccionado.estado
+            obs.modalidadAtencion=obsSeleccionado.modalidadAtencion
+
+            
+          }
+        });
+        setData(dataNueva);
+        //abrirCerrarModalEditar();
+      });
+  };
+
+  useEffect(async () => {
+    await peticionGet();
+  }, []);
