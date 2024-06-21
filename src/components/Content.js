@@ -1,10 +1,7 @@
 import React , { useEffect, useState }  from 'react'
 import Welcome from "./Welcome";
-import Listobs from './Listobs';
-import Listpamxobs from './Listpamxobs';
 
-import TitleContent from './TitleContent';
-import Listpam from './Listpam';
+
 const Content = () => {
 
    const [esObs, setEsObs] = useState(true);
@@ -36,15 +33,7 @@ const Content = () => {
 
                 
                   
-                  <div class="col-lg-12">
-                     {esObs ? (
-                     <Listpamxobs/> 
-                    ) : (
-                      <Listpam/>
-                    )}
-                   
-                     
-                  </div>
+                  
                  
                </div>
               

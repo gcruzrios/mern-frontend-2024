@@ -40,6 +40,23 @@ const TablaEmpleados = () => {
     
   }
 
+  const eliminarprevio = async (id) => {
+    Swal.fire({
+      title: "Está seguro de borrar el registro?",
+      showDenyButton: false,
+      showCancelButton: true,
+      confirmButtonText: "Borrar",
+      denyButtonText: `No borrar`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        eliminar(id);
+        Swal.fire("Registro borrado!", "", "success");
+      } else if (result.isDenied) {
+        Swal.fire("El Registro no ha sido borrado", "", "info");
+      }
+    });
+  };
   
 
   const eliminar = async (id)=>{
@@ -47,12 +64,12 @@ const TablaEmpleados = () => {
       const respuesta = await axios.delete(`/empleado/eliminar/${id}`,{headers:{token:token}})
 
       const mensaje = respuesta.data.mensaje;
-      Swal.fire({
-          icon: 'success',
-          title: mensaje,
-          showConfirmButton: false,
-          timer: 1500
-      })
+      // Swal.fire({
+      //     icon: 'success',
+      //     title: mensaje,
+      //     showConfirmButton: false,
+      //     timer: 1500
+      // })
       obtenerEmpleados();
   }
 
@@ -173,7 +190,7 @@ const TablaEmpleados = () => {
                   <li>
                     <Link
                       className="edit"
-                      to={`/detalleobs/${empleado._id}`}
+                      to={`/editempleado/${empleado._id}`}
                     >
                       {" "}
                       <i className="uil uil-edit"></i>{" "}
@@ -186,7 +203,7 @@ const TablaEmpleados = () => {
                      <button  
                       className="remove"
                       
-                      onClick={()=>eliminar(empleado._id)}
+                      onClick={()=>eliminarprevio(empleado._id)}
                       >
                       {" "}
                       <i className="uil uil-trash-alt"></i>{" "}

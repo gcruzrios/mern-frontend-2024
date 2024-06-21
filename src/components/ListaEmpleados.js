@@ -2,7 +2,7 @@ import React from "react";
 import ModalAddEmpleado from "./ModalAddEmpleado";
 import Paginator from "./Paginator";
 
-import Tablaobs from "./Tablaobs";
+
 import TablaEmpleados from "./TablaEmpleados";
 
 const ListaEmpleados = () => {

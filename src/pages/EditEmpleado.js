@@ -8,11 +8,11 @@ import Footer from "../components/Footer.js";
 import Home from "../components/Home.js";
 
 import Sidebar from "../components/Sidebar";
-import Content from "../components/Content.js";
-import ContentPam from "../components/ContentPam.js";
-import FichaAddPam from "../components/FichaAddPam.js";
+import FormEditEmpleado from "../components/FormEditEmpleado.js";
 
-const Addpam = () => {
+
+
+const EditEmpleado = () => {
   return (
     <div>
       <div className="mobile-search">
@@ -44,14 +44,15 @@ const Addpam = () => {
               </a>
             </div>
             <div className="top-menu">
-              
+             
             </div>
           </div>
           {/* <!-- ends: navbar-left --> */}
 
-          <div className="navbar-right">{/* <!-- navigation nav.js --> */}</div>
-          {/* <!-- ends: .navbar-right --> */}
+          <div className="navbar-right">{/* <!-- navigation nav.js --> */}
           <Nav />
+          </div>
+          {/* <!-- ends: .navbar-right --> */}
         </nav>
       </header>
       <main className="main-content">
@@ -63,10 +64,9 @@ const Addpam = () => {
 
         <div className="contents">{/* <!-- Home.js --> */}
        
-        {/* <ContentPam/> */}
-        <FichaAddPam/>
-
-        </div>
+        {/* <FichaUser/> */}
+        
+         <FormEditEmpleado/>         </div>
         <Footer />
         {/* <!-- Footer.js --> */}
       </main>
@@ -86,4 +86,4 @@ const Addpam = () => {
   );
 };
 
-export default Addpam;
+export default EditEmpleado;

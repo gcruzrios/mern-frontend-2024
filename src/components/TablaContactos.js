@@ -14,20 +14,7 @@ const TablaContactos = () => {
 
 
     CODIGO: "",
-    OBS: "",
-    CEDULAJUR: "",
-    TELEFONO: "",
-    REPRESENTANTELEGAL: "",
-    COORDINADOR: " ",
-    CORREOELECTRONICO: "",
-    CORREOELECTRONICO2: "",
-    PROVINCIA: "",
-    CANTON: "",
-    DISTRITO: "",
-    DIRECCION: "",
-    Fiscalizador_2023: "",
-    Fiscalizador_2023_1: "",
-    Fiscalizador_Antiguo_2022: ""
+    
 
    
   });
