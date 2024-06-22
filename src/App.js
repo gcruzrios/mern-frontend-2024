@@ -54,10 +54,9 @@ function App() {
           <Route exact path="/register" element={<Registro />} />
           <Route exact path="/acerca" element={<AcercaDe />} />
           <Route exact path="/contactos" element={<Contacto />} />
-          <Route exact path='/recordarpassword' element={<RecordarPass/> }/>
-                 
+          <Route exact path='/recordarpassword' element={<RecordarPass/> }/>              
           <Route exact path="/editempleado/:id" element={<EditEmpleado />} /> 
-          {/* <Route exact path="/listpam" element={estaAutenticado() ? <Listpam /> : <Navigate to="/" />}/> */}
+        
           
           
          
