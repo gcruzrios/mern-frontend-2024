@@ -44,13 +44,8 @@ export const Login = () => {
             localStorage.setItem('token', token);
             localStorage.setItem('nombre', nombre);
             localStorage.setItem('idUsuario', idUsuario);
-
-         
-            
-
             window.location.href = 'index?search='
-
-
+  
         }
 
     }
