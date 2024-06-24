@@ -101,7 +101,7 @@ const TablaEmpleados = () => {
  
   useEffect(() => {
     //peticionGet();
-    if (buscar === ""){
+    if (buscarNombre === ""){
       obtenerEmpleados();
     }else{
       buscar()
