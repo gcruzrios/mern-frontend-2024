@@ -36,7 +36,7 @@ const ModalAddEmpleado = () => {
         timer: 1000
     })
     setTimeout(()=>{
-        window.location.href='/index'
+        window.location.href='/index?search='
     },1500)
 }
   return (
