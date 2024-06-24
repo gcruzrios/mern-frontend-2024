@@ -1,11 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ModalAddEmpleado from "./ModalAddEmpleado";
 import Paginator from "./Paginator";
-
+import { useEmpleadoStore } from '../store/empleado-store'
 
 import TablaEmpleados from "./TablaEmpleados";
 
 const ListaEmpleados = () => {
+//const [search, setSearch] = useState('');
+//const changeProfile = useProfileStore(state => state.changeProfile);
+const buscarNombre = useEmpleadoStore(state => state.buscarNombre);
+const changeNombre = useEmpleadoStore(state => state.changeNombre);
+
+
+const buscar = async (e)=>{
+  console.log("entro en buscar")
+  //changeNombre(search)
+
+  if (e.target.value===''){
+      //obtenerEmpleados();
+  }else{
+      useEmpleadoStore.setState({buscarNombre})
+      console.log (buscarNombre);
+  }
+
+  // const idUsuario = localStorage.getItem('idUsuario');
+  // console.log(idUsuario);
+  // if (e.target.value===''){
+  //       obtenerEmpleados();
+  // }
+  // const buscar= e.target.value
+  // const token = localStorage.getItem('token');
+  // const respuesta = await axios.get(`/empleado/buscar/${buscar}/${idUsuario}`,{headers:{token:token}})
+
+
+
+   //setEmpleados(respuesta.data);
+
+}
+
   return (
     <>
       <div className="col-lg-12">
@@ -21,7 +53,7 @@ const ListaEmpleados = () => {
               </div>
 
               <form
-                action="/"
+                onSubmit={buscar}
                 className="d-flex align-items-center user-member__form my-sm-0 my-2"
               >
                 <img src="/img/svg/search.svg" alt="search" className="svg" />
@@ -30,8 +62,19 @@ const ListaEmpleados = () => {
                   type="search"
                   placeholder="Buscar por Nombre"
                   aria-label="Search"
+                  name="search"
+                  onChange={(e)=> changeNombre(e.target.value)}
+                  
                 />
+                <button class="btn btn-primary btn-default btn-rounded text-capitalize">
+                   Buscar
+                </button>
               </form>
+                {/* <button class="btn btn-primary btn-default btn-rounded "><img src="/img/svg/layers.svg" alt="layers" class="svg"/>
+                    Buscar
+                </button> */}
+                
+
             </div>
           </div>
           <div className="action-btn">

@@ -46,7 +46,7 @@ const ModalAddEmpleado = () => {
         class="modal fade new-member "
         id="new-member"
         role="dialog"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="staticBackdropLabel"
         aria-hidden="true"
       >

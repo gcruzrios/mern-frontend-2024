@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import Swal from 'sweetalert2';
 import ReactPaginate from 'react-paginate';
 import { Link } from "react-router-dom";
-
+import { useEmpleadoStore } from '../store/empleado-store'
+import { useSearchParams } from 'react-router-dom';
 import axios from "axios";
 
 const TablaEmpleados = () => {
@@ -14,11 +15,13 @@ const TablaEmpleados = () => {
   const [puesto, setPuesto] = useState('');
   const [tcontratos, setTcontratos] = useState([]);
   const [contratoSelect, setContratoSelect] = useState('');
-
+  const [searchParams, setSearchParams] = useSearchParams();
+  const buscarNombre = useEmpleadoStore(state => state.buscarNombre);
+  
   let Empleados = [];
 
   useEffect(() => {
-
+    console.log(buscarNombre);
     obtenerEmpleados();
     setTcontratos(['Fijo', 'Temporal', 'Practicante']);
     setContratoSelect('Fijo');
@@ -75,15 +78,16 @@ const TablaEmpleados = () => {
 
 
   const buscar = async (e)=>{
-
-    const idUsuario = localStorage.getItem('idUsuario');
     
+    const buscar = searchParams.get('search');
+    const idUsuario = localStorage.getItem('idUsuario');
+    console.log(buscar)
     console.log(idUsuario);
 
-    if (e.target.value===''){
+    if (buscar===''){
         obtenerEmpleados();
     }
-    const buscar= e.target.value
+    //const buscar= e.target.value
     const token = localStorage.getItem('token');
     const respuesta = await axios.get(`/empleado/buscar/${buscar}/${idUsuario}`,{headers:{token:token}})
 
@@ -91,12 +95,18 @@ const TablaEmpleados = () => {
 
     setEmpleados(respuesta.data);
 
+
 }
 
  
   useEffect(() => {
     //peticionGet();
-    obtenerEmpleados();
+    if (buscarNombre === ""){
+      obtenerEmpleados();
+    }else{
+      buscar()
+    }
+    
   }, []);
 
 
@@ -145,7 +155,7 @@ const TablaEmpleados = () => {
         </thead>
         <tbody>
           {selectedItems.map((empleado, i) => (
-            <tr key={empleados._id}>
+            <tr key={empleado._id}>
               {/* data */}
           
               <td>{i+1}</td>

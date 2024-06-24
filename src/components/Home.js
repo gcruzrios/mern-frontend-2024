@@ -17,9 +17,9 @@ const Home = () => {
   return (
     <div>
 
-      <div class="crm mb-25">
-        <div class="container-fluid">
-          <div class="row ">
+      <div className="crm mb-25">
+        <div className="container-fluid">
+          <div className="row ">
 
             <Welcome />
 
@@ -27,7 +27,7 @@ const Home = () => {
 
             
 
-            <div class="col-lg-12">
+            <div className="col-lg-12">
 
               
                 <ListaEmpleados />
