@@ -48,7 +48,7 @@ export const Login = () => {
          
             
 
-            window.location.href = '/index'
+            window.location.href = 'index?search='
 
 
         }
