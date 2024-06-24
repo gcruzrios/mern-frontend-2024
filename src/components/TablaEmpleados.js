@@ -9,12 +9,12 @@ import axios from "axios";
 const TablaEmpleados = () => {
 
   const [empleados,setEmpleados] = useState([]);
-  const [nombre, setNombre] = useState('');
-  const [apellidos, setApellidos] = useState('');
-  const [identificacion, setIdentificacion] = useState('');
-  const [puesto, setPuesto] = useState('');
-  const [tcontratos, setTcontratos] = useState([]);
-  const [contratoSelect, setContratoSelect] = useState('');
+  // const [nombre, setNombre] = useState('');
+  // const [apellidos, setApellidos] = useState('');
+  // const [identificacion, setIdentificacion] = useState('');
+  // const [puesto, setPuesto] = useState('');
+  // const [tcontratos, setTcontratos] = useState([]);
+  // const [contratoSelect, setContratoSelect] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
   const buscarNombre = useEmpleadoStore(state => state.buscarNombre);
   
@@ -101,7 +101,7 @@ const TablaEmpleados = () => {
  
   useEffect(() => {
     //peticionGet();
-    if (buscarNombre === ""){
+    if (buscar === ""){
       obtenerEmpleados();
     }else{
       buscar()
