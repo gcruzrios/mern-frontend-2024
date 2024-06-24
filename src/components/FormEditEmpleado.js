@@ -28,7 +28,7 @@ const FormEditEmpleado = () => {
   };
   const handleVolver = async (e) => {
     setTimeout(()=>{
-      window.location.href='/index'
+      window.location.href='/index?search='
   },1500)
   }
  
