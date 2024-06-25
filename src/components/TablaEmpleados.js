@@ -13,8 +13,8 @@ const TablaEmpleados = () => {
   // const [apellidos, setApellidos] = useState('');
   // const [identificacion, setIdentificacion] = useState('');
   // const [puesto, setPuesto] = useState('');
-  // const [tcontratos, setTcontratos] = useState([]);
-  // const [contratoSelect, setContratoSelect] = useState('');
+  const [tcontratos, setTcontratos] = useState([]);
+  const [contratoSelect, setContratoSelect] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
   const buscarNombre = useEmpleadoStore(state => state.buscarNombre);
   
